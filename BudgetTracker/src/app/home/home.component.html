@@ -1,0 +1,106 @@
+<!-- <div class="homeNotAutho" *ngIf="!auth; else homeAutho">
+    <section class="hero">
+      <div class="container">
+        <h2 class="hero-hock">Why to remember<span class="coloring-span">?</span></h2>
+        <div class="content text-center">
+          <h2 class="">Welcome To <span class="coloring-span">BT</span></h2>
+          <h1>You Online <span class="coloring-span">B</span>udget <span class="coloring-span">T</span>racker</h1>
+        </div>
+      </div>
+    </section>
+    <section class="Take_care py-4">
+      <div class="container py-3">
+        <h2 class="home_headline">Take Control of Your Budget Today</h2>
+        <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 p-4">
+          <h3 class="my-3">Simplify your finances with our intuitive budgeting tools.</h3>
+          <p class="m-0">BT is you online way to track your budget.</p>
+          <p>Easily track your income, expenses, and savings</p>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 p-4">
+            <img src="../../assets/svgs/undraw_savings_re_eq4w.svg" alt="saving image" class="w-100">
+        </div>
+        </div>
+      </div>
+    </section>
+    <section class="join_us py-4">
+      <div class="container py-3">
+        <h2 class="home_headline">Join Our Community</h2>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6 p-4">
+            <img src="../../assets/svgs/undraw_community_re_cyrm.svg" alt="saving image" class="w-100">
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6 p-4">
+            <P>Become part of a community that values financial literacy and empowerment. Share tips, ask questions, and learn from others on the same journey.</P>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="get-started py-4">
+      <div class="container py-3 text-center">
+        <h2 class="home_headline">Get Started Now!</h2>
+        <div class="contnet m-auto">
+          <p>Ready to take the first step towards better budgeting? Sign up today and unlock the full potential of your finances! This transcript outlines the essential elements of a hero page for the A Budget Tracker website, focusing on engaging content that highlights the platform's benefits and features.</p>
+          <a routerLink="register" class="btn btn-secandary">Register</a>
+        </div>
+      </div>
+    </section>
+</div>
+<ng-template #homeAutho>
+
+</ng-template> -->
+<div class="home">
+  <div class="container py-3">
+    <div class="panal-main p-2 rounded w-100 d-flex">
+      <div class="username ps-3">welcome Mohammed</div>
+      <div class=" ms-auto saving pe-3">
+        <div class="curent-balance"><i class="fa-solid fa-sack-dollar"></i> Balance = E£ 7000</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+          <label for="name" class="form-label">Transaction Name:</label>
+          <input type="text" class="form-control" id="name" formControlName="name" name="name">
+          <div *ngIf="transactionForm.get('name')?.invalid && (transactionForm.get('name')?.dirty || transactionForm.get('name')?.touched)">
+              <small class="text-danger">User Name is required.</small>
+          </div>
+      </div>
+      <div class="mb-3">
+          <label for="amount" class="form-label">amount:</label>
+          <input type="number" class="form-control" id="amount" formControlName="amount" name="amount">
+          <div *ngIf="transactionForm.get('amount')?.invalid && (transactionForm.get('amount')?.dirty || transactionForm.get('amount')?.touched)">
+              <small class="text-danger">A valid email is required.</small>
+          </div>
+      </div>
+      <div class="mb-3">
+        <label for="transactionType">Choose a transaction type:</label>
+        <select formControlName="type" id="transactionType" class="w-25">
+            <option value="" disabled selected>Choose a transaction type</option>
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="transactionType">Choose a transaction type:</label>
+        <select formControlName="type" id="transactionType" class="w-25">
+            <option value="" disabled selected>Choose a transaction type</option>
+            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <!-- <div class="mb-3">
+          <label for="password" class="form-label">Category:</label>
+          <input type="pass" class="form-control" id="category" formControlName="password" name="password">
+          <div *ngIf="transactionForm.get('password')?.invalid && (transactionForm.get('password')?.dirty || transactionForm.get('password')?.touched)">
+              <small class="text-danger">Password is required (minimum 6 characters).</small>
+          </div>
+      </div> -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-from rounded-pill ">Save</button>
+      </div>
+  </form>
+  </div>
+  <button class="btn-new-transaction rounded-circle">+</button>
+  </div>
+
+

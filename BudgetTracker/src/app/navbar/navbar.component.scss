@@ -1,0 +1,16 @@
+.navbar-brand{
+  font-weight: 700;
+}
+nav{
+  background-color: var(--main) !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  
+  *{
+    color: var(--background);
+  }
+  // .btn{
+  //   border-color: var(--background);
+  // }
+}
