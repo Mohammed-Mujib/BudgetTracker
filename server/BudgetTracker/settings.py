@@ -64,7 +64,7 @@ INTERNAL_IPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
 ]
-
+CSRF_TRUSTED_ORIGINS = ['http://localhost:4200']
 CORS_ALLOW_CREDENTIALS = True 
 
 ROOT_URLCONF = 'BudgetTracker.urls'
