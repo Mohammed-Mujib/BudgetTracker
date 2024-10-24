@@ -14,7 +14,7 @@
   // --main:#08327d;
   --main-l-2:hsl(218, 88%, 39%);
   --secandary:#558a86;
-  --accent: #000000;
+  --accent: #FFFFFF;
 }
 body{
   background-color: var(--background);
@@ -82,7 +82,7 @@ body{
   transition: .3s;
   &:hover{
     color: var(--main) !important;
-    border: 1px solid var(--background) !important;
+    border: 1px solid var(--main) !important;
   }
   i{
   color: var(--background) !important;
@@ -137,31 +137,72 @@ body{
 }
 
 .autho-form{
-  max-width: 700px;
-
-  box-shadow: 0px 0px 15px 0px #b7c7bda9;
+  max-width: 1200px;
+  margin-top: 100px;
+  // box-shadow: 0px 0px 15px 0px #b7c7bda9;
   margin-left: auto;
   margin-right: auto;
   padding: 16px;
+  img{
+  width: 100%;
+  }
   .btn{
-    width: 50%;
+    width:100%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
 
   }
+  form{
+    max-width: 500px;
+    padding-bottom: 25px !important;
+    background-color: var(--main);
+    .form-control{
+      &::placeholder{
+        color: var(--secandary);
+        text-transform: capitalize;
+      }
+    }
+  .form-label{
+    color: var(--background);
+    }
+    .redirect{
+      padding-top: 15px;
+      text-align: center;
+      p{
+        color: var(--accent);
+        a{
+          transition: .2s;
+            color: var(--text);
+            &:hover{
+              color: var(--secandary);
+            }
+        }
+      }
+
+    }
+  }
+
   // margin-top: 100px;
   .form-head{
     color: var(--main);
     font-weight: 700;
     text-align: center;
   }
-  .form-label{
-    color: var(--main);
-  }
+
 
 }
 .coloring-span{
   color: var(--main);
+}
+@media (max-width:768px) {
+  html{
+    font-size: 12px;
+  }
+}
+@media (min-width:769px) and (max-width:911px) {
+  html{
+    font-size: 14px;
+  }
 }

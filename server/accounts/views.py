@@ -11,6 +11,9 @@ import datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.middleware.csrf import get_token
+from django.contrib.auth import authenticate, login ,logout
+
+
 class RegisterView(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
@@ -26,6 +29,7 @@ class LoginView(APIView):
             email = request.data['email']
             password = request.data['password']
             user = User.objects.filter(email=email).first()
+            user = authenticate(request, email=email, password=password)
             if user is None:
                 raise AuthenticationFailed('User not found!')
             if not user.check_password(password):
@@ -45,6 +49,7 @@ class LoginView(APIView):
             response.set_cookie('csrftoken', csrf_token)
             
             response.data = {'jwt': token}
+            login(request, user) 
             return response
 
         except Exception as e:
@@ -76,4 +81,5 @@ class LogoutView(APIView):
         response.delete_cookie('jwt')
         response.delete_cookie('csrftoken')
         response.data = {'message': 'success'}
+        logout(request) 
         return response

@@ -1,0 +1,21 @@
+
+p{
+  margin-bottom: 2px;
+  i{
+    color: var(--main);
+  }
+}
+button{
+  margin-top: 30px;
+}
+.error-stauts{
+  color: red;
+  font-weight: 800;
+  font-size: 80px;
+  small{
+    font-size: 16px;
+  }
+  p{
+  margin-bottom: 16px;
+  }
+}

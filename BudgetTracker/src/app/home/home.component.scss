@@ -2,7 +2,7 @@
   height: 100svh;
   .hero-hock{
     padding-top: 200px;
-    font-size: 70px;
+    font-size: 4.375rem;
     font-weight: 700;
   }
 
@@ -14,7 +14,7 @@
         color: var(--main);
       }
       h1{
-        font-size: 60px;
+        font-size: 3.75rem;
         font-weight: 400;
         color: var(--text);
       }
@@ -31,63 +31,18 @@
 }
 .home_headline{
   text-align: center;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: 500;
   color: var(--main);
 }
 .get-started{
   div{
-    width: 500px;
+    max-width: 500px;
     p{
     text-align: left;
     }
     a{
       margin-top: 50px;
     }
-  }
-}
-.home{
-  color: var(--background);
-  .container{
-    width: 700px !important;
-  }
-  padding-top: 100px;
-  .panal-main{
-    background-color: var(--main);
-  }
-}
-.btn-new-transaction{
-  background-color: var(--background);
-  border: 1px solid var(--background);
-  width:60px ;
-  height: 60px;
-  font-size: 40px;
-  color: var(--background) !important;
-  font-weight: 600;
-  position:absolute;
-  bottom: 100px;
-  z-index: 0;
-  right: 100px;
-  transition: .3s;
-  overflow: hidden;
-  &:hover{
-    color: var(--main) !important;
-    border: 1px solid var(--main);
-
-  }
-  &::after{
-    position: absolute;
-    background-color: var(--main);
-    content: "";
-    left: 0;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    transition: .3s;
-    z-index: -1;
-    border-radius: 50%;
-  }
-  &:hover::after{
-    transform: translatex(-100%);
   }
 }

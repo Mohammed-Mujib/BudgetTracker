@@ -1,1 +1,71 @@
-<p>transactions works!</p>
+<div class="home">
+  <div class="container py-3">
+    <div class="panal-main p-2 rounded w-100 d-flex">
+      <div class="username ps-3">welcome {{user.name}}</div>
+      <div class=" ms-auto saving pe-3">
+        <div class="curent-balance"><i class="fa-solid fa-sack-dollar"></i> Balance = E£ {{balance}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="transaction-container rounded" [class.d-none]="!formvisable">
+      <div class="transaction-type p-2 pb-0  ">
+              <div class="text-end">
+                <button class="close-btn ms- me-0" (click)="showform()"><i class="fa-regular fa-circle-xmark"></i></button>
+              </div>
+            <button class="p-1 rounded rounded-bottom-0 me-1 tran-btn" (click)="changToExpense()" [class.active]="isExpense" [disabled]="isExpense">Expense</button>
+            <button class="p-1 rounded rounded-bottom-0 me-1 tran-btn" (click)="changToIncome()" [class.active]="!isExpense" [disabled]="!isExpense">Income</button>
+
+        </div>
+      <form [formGroup]="transactionForm" class="transactionForm rounded p-2 pt-0" (ngSubmit)="onSubmit()">
+        <div class="new-transaction-body p-2 pb-3 rounded">
+          <div class="mb-3">
+            <label for="name" class="form-label">Transaction Discription:</label>
+            <input type="text" class="form-control" id="name" formControlName="name" name="name" placeholder="Enter transaction discription">
+            <div *ngIf="transactionForm.get('name')?.invalid && (transactionForm.get('name')?.dirty || transactionForm.get('name')?.touched)">
+                <small class="text-danger">User Name is required.</small>
+            </div>
+          </div>
+          <div class="mb-3">
+              <label for="amount" class="form-label">amount:</label>
+              <input type="number" class="form-control" id="amount" formControlName="amount" name="amount" placeholder="enter transaction amount">
+              <div *ngIf="transactionForm.get('amount')?.invalid && (transactionForm.get('amount')?.dirty || transactionForm.get('amount')?.touched)">
+                  <small class="text-danger">A valid email is required.</small>
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="transactionType" class="form-label me-3">Transaction type:</label>
+            <select formControlName="category"  class="form-select" id="transactionType" class="w-25">
+                <option selected>Choose a transaction type</option>
+                <!-- <option value="" disabled selected>Choose a transaction type</option> -->
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-from rounded-pill ">Save</button>
+          </div>
+        </div>
+    </form>
+    </div>
+
+  <ul class="all-transactions list-unstyled mt-3" *ngIf="transactions.length >0; else noTransactions">
+      <li class="transaction mb-1 shadow p-2 rounded" *ngFor="let transaction of transactions">
+          <div class="date-info">
+          <p>Date: {{transaction.date}}</p>
+          </div>
+          <div class="d-flex">
+          <p>{{transaction.name}}</p>
+          <div class="ms-auto">
+            <p *ngIf="transaction.transaction_type == 'income'" class=" text-success"> <i class="fa-solid fa-up-long"></i> E£ {{transaction.amount}}</p>
+          <p *ngIf="transaction.transaction_type == 'expense'" class="text-danger"> <i class="fa-solid fa-down-long"></i> E£ {{transaction.amount}}</p>
+          </div>
+          </div>
+
+      </li>
+  </ul>
+  <ng-template #noTransactions>
+    <h3>you don't have any transactions, add one now </h3>
+  </ng-template>
+  </div>
+  <button class="btn-new-transaction rounded-circle"  (click)="showform()" [class.d-none]="formvisable">+</button>
+</div>

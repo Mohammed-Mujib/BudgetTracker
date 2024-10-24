@@ -1,25 +1,35 @@
 <div class="container">
   <div class="login autho-form rounded">
-    <h2 class="form-head">Login Form</h2>
-    <form [formGroup]="loginForm" class="my-2" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-          <label for="email" class="form-label">Email:</label>
-          <input type="email" class="form-control" id="email" formControlName="email" name="email">
-          <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
-              <small class="text-danger">A valid email is required.</small>
-          </div>
+    <!-- <h2 class="form-head">Login Form</h2> -->
+    <h2 class="form-head">Welcom back</h2>
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-5">
+        <form [formGroup]="loginForm" class="rounded p-3" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" formControlName="email" name="email" placeholder="enter your email">
+            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                <small class="text-danger">A valid email is required.</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" formControlName="password" name="password" placeholder="enter your password">
+            <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                <small class="text-danger">Password is required (minimum 6 characters).</small>
+            </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-from rounded-pill">login</button>
+        </div>
+        <div class="redirect">
+          <p>Dont have an account? <a routerLink="/register">Register</a></p>
+        </div>
+      </form>
       </div>
-      <div class="mb-3">
-          <label for="password" class="form-label">Password:</label>
-          <input type="password" class="form-control" id="password" formControlName="password" name="password">
-          <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
-              <small class="text-danger">Password is required (minimum 6 characters).</small>
-          </div>
+      <div class="col-sm-12 col-md-7 d-sm-none d-md-block">
+        <img src="../../assets/svgs/undraw_login_re_4vu2.svg" alt="">
       </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-from rounded-pill">login</button>
-      </div>
-
-    </form>
+    </div>
   </div>
 </div>

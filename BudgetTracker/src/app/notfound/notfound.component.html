@@ -1,1 +1,9 @@
-<p>notfound works!</p>
+<div class="container position-relative">
+  <div class="contnet position-fixed start-50 top-50 translate-middle text-center">
+    <h2 class="error-stauts d-flex align-items-center justify-content-center"><p>404</p><small>Page not founded <i class="fa-regular fa-face-frown"></i> !</small></h2>
+    <p>Even cool people like you lose their way sometimes <i class="fa-solid fa-face-laugh-squint"></i></p>
+    <p>dont wary click in the button blow to go back home <i class="fa-solid fa-face-smile-wink"></i></p>
+    <button routerLink="/home" class=" btn btn-secandary" *ngIf="!auth"><i class="fa-solid fa-house"></i> Home</button>
+    <button routerLink="/transactions" class="btn btn-secandary" *ngIf="auth"><i class="fa-solid fa-house"></i> Home</button>
+  </div>
+</div>

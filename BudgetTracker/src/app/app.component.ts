@@ -6,6 +6,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,9 @@ import { RegisterComponent } from './register/register.component';
             NotfoundComponent,
             FooterComponent,
             LoginComponent,
-            RegisterComponent
+            RegisterComponent,
+            TransactionsComponent,
+            StatisticComponent,
           ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

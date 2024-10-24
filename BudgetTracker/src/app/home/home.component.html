@@ -1,4 +1,3 @@
-<!-- <div class="homeNotAutho" *ngIf="!auth; else homeAutho">
     <section class="hero">
       <div class="container">
         <h2 class="hero-hock">Why to remember<span class="coloring-span">?</span></h2>
@@ -13,9 +12,15 @@
         <h2 class="home_headline">Take Control of Your Budget Today</h2>
         <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-6 p-4">
-          <h3 class="my-3">Simplify your finances with our intuitive budgeting tools.</h3>
-          <p class="m-0">BT is you online way to track your budget.</p>
-          <p>Easily track your income, expenses, and savings</p>
+          <h3 class="my-3">Transform your financial journey with our user-friendly budgeting tools.</h3>
+          <p class="m-0">With Budget Tracker (BT), managing your finances has never been easier. Our intuitive platform empowers you to effortlessly monitor your income, expenses, and savings—all in one place.</p>
+          <h3>Key Features:</h3>
+          <ul>
+              <li><strong>Simplified Tracking:</strong> Easily record and categorize your income and expenses to gain a clear understanding of your financial health.</li>
+              <li><strong>Smart Insights:</strong> Receive personalized insights and recommendations based on your spending habits to help you make informed decisions.</li>
+              <li><strong>Savings Goals:</strong> Set and track your savings goals to stay motivated and achieve your financial aspirations.</li>
+          </ul>
+          <p>Join thousands of satisfied users who have taken charge of their finances. Start using Budget Tracker today and pave the way to a more secure financial future! Feel free to modify any sections to better fit your brand voice or specific features!</p>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 p-4">
             <img src="../../assets/svgs/undraw_savings_re_eq4w.svg" alt="saving image" class="w-100">
@@ -31,7 +36,17 @@
             <img src="../../assets/svgs/undraw_community_re_cyrm.svg" alt="saving image" class="w-100">
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6 p-4">
-            <P>Become part of a community that values financial literacy and empowerment. Share tips, ask questions, and learn from others on the same journey.</P>
+            <p><strong>Become part of a vibrant community dedicated to financial literacy and empowerment.</strong></p>
+
+    <p>At <strong>Budget Tracker</strong>, we believe that knowledge is power. By joining our community, you’ll have the opportunity to:</p>
+
+    <ul>
+        <li><strong>Share Tips and Strategies:</strong> Exchange valuable insights and practical tips with fellow members to enhance your budgeting skills.</li>
+        <li><strong>Ask Questions:</strong> Don’t hesitate to seek advice! Our supportive community is here to help you navigate your financial journey.</li>
+        <li><strong>Learn from Others:</strong> Gain inspiration and knowledge from those who are on the same path. Discover new approaches to managing your finances effectively.</li>
+    </ul>
+
+    <p>Together, we can foster a culture of learning and growth. Join us today and take the next step towards achieving your financial goals!</p>
           </div>
         </div>
       </div>
@@ -40,67 +55,13 @@
       <div class="container py-3 text-center">
         <h2 class="home_headline">Get Started Now!</h2>
         <div class="contnet m-auto">
-          <p>Ready to take the first step towards better budgeting? Sign up today and unlock the full potential of your finances! This transcript outlines the essential elements of a hero page for the A Budget Tracker website, focusing on engaging content that highlights the platform's benefits and features.</p>
+          <p class="p-2">Ready to take the first step towards better budgeting? Sign up today and unlock the full potential of your finances! This transcript outlines the essential elements of a hero page for the A Budget Tracker website, focusing on engaging content that highlights the platform's benefits and features.</p>
           <a routerLink="register" class="btn btn-secandary">Register</a>
         </div>
       </div>
     </section>
-</div>
-<ng-template #homeAutho>
 
-</ng-template> -->
-<div class="home">
-  <div class="container py-3">
-    <div class="panal-main p-2 rounded w-100 d-flex">
-      <div class="username ps-3">welcome Mohammed</div>
-      <div class=" ms-auto saving pe-3">
-        <div class="curent-balance"><i class="fa-solid fa-sack-dollar"></i> Balance = E£ 7000</div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-          <label for="name" class="form-label">Transaction Name:</label>
-          <input type="text" class="form-control" id="name" formControlName="name" name="name">
-          <div *ngIf="transactionForm.get('name')?.invalid && (transactionForm.get('name')?.dirty || transactionForm.get('name')?.touched)">
-              <small class="text-danger">User Name is required.</small>
-          </div>
-      </div>
-      <div class="mb-3">
-          <label for="amount" class="form-label">amount:</label>
-          <input type="number" class="form-control" id="amount" formControlName="amount" name="amount">
-          <div *ngIf="transactionForm.get('amount')?.invalid && (transactionForm.get('amount')?.dirty || transactionForm.get('amount')?.touched)">
-              <small class="text-danger">A valid email is required.</small>
-          </div>
-      </div>
-      <div class="mb-3">
-        <label for="transactionType">Choose a transaction type:</label>
-        <select formControlName="type" id="transactionType" class="w-25">
-            <option value="" disabled selected>Choose a transaction type</option>
-            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-      <div class="mb-3">
-        <label for="transactionType">Choose a transaction type:</label>
-        <select formControlName="type" id="transactionType" class="w-25">
-            <option value="" disabled selected>Choose a transaction type</option>
-            <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-      <!-- <div class="mb-3">
-          <label for="password" class="form-label">Category:</label>
-          <input type="pass" class="form-control" id="category" formControlName="password" name="password">
-          <div *ngIf="transactionForm.get('password')?.invalid && (transactionForm.get('password')?.dirty || transactionForm.get('password')?.touched)">
-              <small class="text-danger">Password is required (minimum 6 characters).</small>
-          </div>
-      </div> -->
-      <div class="text-center">
-        <button type="submit" class="btn btn-from rounded-pill ">Save</button>
-      </div>
-  </form>
-  </div>
-  <button class="btn-new-transaction rounded-circle">+</button>
-  </div>
+
+
 
 

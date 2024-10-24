@@ -53,8 +53,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private _HttpClient: HttpClient) { }
+  constructor(private _HttpClient: HttpClient) {
+    // if(this.getCookie(`sessionid=`).length>3){
+    //     this.isLogined.next(true);
+    // }
+  }
 
+  getCookie(name:string): string {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name)) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length));
+          break;
+        }
+      }
+    }
+    return cookieValue || '';
+  }
   getCsrfToken(): string {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -80,6 +98,7 @@ export class DataService {
 
   user(): Observable<any> {
     const headers = new HttpHeaders({
+      // 'X-CSRFToken': this.getCookie(`csrftoken=`),
       'X-CSRFToken': this.getCsrfToken(),
       'Content-Type': 'application/json'
     });
@@ -87,25 +106,36 @@ export class DataService {
   }
 
   logout(): Observable<any> {
-    return this._HttpClient.post("/api/logout/", {}, { withCredentials: true });
+    const headers = new HttpHeaders({
+      // 'X-CSRFToken': this.getCookie(`csrftoken=`),
+      'X-CSRFToken': this.getCsrfToken(),
+      'Content-Type': 'application/json'
+    });
+    return this._HttpClient.post("/api/logout/", {}, {headers, withCredentials: true });
   }
 
   getTransactions(): Observable<any> {
     const headers = new HttpHeaders({
+      // 'X-CSRFToken': this.getCookie(`csrftoken=`),
+
       'X-CSRFToken': this.getCsrfToken(),
       'Content-Type': 'application/json'
     });
+    // console.log("CSRF Token:", this.getCsrfToken());
     return this._HttpClient.get("api/transactions/", { headers, withCredentials: true });
   }
 
   createTransaction(transactionData: any): Observable<any> {
     const headers = new HttpHeaders({
+      // 'X-CSRFToken': this.getCookie(`csrftoken=`),
       'X-CSRFToken': this.getCsrfToken(),
       'Content-Type': 'application/json'
     });
+    // console.log("CSRF Token:", this.getCsrfToken());
     return this._HttpClient.post("api/transactions/", transactionData, { headers, withCredentials: true });
   }
-  //added
+
   isLogined = new BehaviorSubject(false);
   userData = new BehaviorSubject({});
+
 }
