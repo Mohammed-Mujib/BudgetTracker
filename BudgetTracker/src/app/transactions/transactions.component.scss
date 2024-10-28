@@ -7,6 +7,7 @@
   .panal-main{
     background-color: var(--main);
   }
+
 }
 .btn-new-transaction{
   background-color: var(--background);
@@ -16,7 +17,7 @@
   font-size: 40px;
   color: var(--background) !important;
   font-weight: 600;
-  position:absolute;
+  position:fixed;
   bottom: 100px;
   z-index: 0;
   right: 100px;
@@ -44,7 +45,7 @@
   }
 }
 .transaction-container{
-background-color: var(--main);
+  background-color: var(--main);
   .transaction-type{
     // background-color: red;
     .tran-btn{
@@ -59,6 +60,10 @@ background-color: var(--main);
       color: var(--background);
       border: none;
       background-color: transparent;
+      transition: .2s;
+      &:hover{
+        color: var(--text);
+      }
     }
     .active{
       background-color: var(--background);
@@ -90,3 +95,8 @@ background-color: var(--main);
     }
 }
 
+@media (max-width:768px){
+  .container{
+  width:100% !important ;
+  }
+}

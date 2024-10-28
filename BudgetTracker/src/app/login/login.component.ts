@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Router, RouterLink } from '@angular/router';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb:FormBuilder,private _DataService:DataService, private _Router:Router){}
 
   ngOnInit(): void {
+    this._DataService.checkUserExist()
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -38,19 +40,26 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-      this._DataService.login(this.loginForm.value).subscribe(
-        response => {
-          console.log(`user logined:`, response);
-          this.checkUser()
-          // this._Router.navigate(['transactions']);
-        },
-        error => {
-          console.error('login error:', error);
-        }
-      );
+        console.log(this.loginForm.value);
+        this._DataService.login(this.loginForm.value).subscribe(
+          response => {
+            console.log(`user logined:`, response);
+            this.checkUser()
+          },
+          error => {
+            console.error('login error:', error);
+          }
+        );
     }
   }
+  inputType = "password";
+  see:boolean = false;
+  showPassword():void{
+    this.see = !this.see;
+    this.inputType = this.see ? 'text' : 'password';
+  }
+
 }

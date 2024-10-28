@@ -13,12 +13,14 @@ import { Router, RouterLink } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
+
   registerForm!: FormGroup;  // Use definite assignment assertion
 
   constructor(private fb: FormBuilder, private _DataService:DataService, private _Router:Router) {}
 
   ngOnInit(): void {
     // Initialize the form group
+    this._DataService.checkUserExist()
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -40,4 +42,12 @@ export class RegisterComponent implements OnInit {
     );
     }
   }
+
+  inputType = "password";
+  see:boolean = false;
+  showPassword():void{
+    this.see = !this.see;
+    this.inputType = this.see ? 'text' : 'password';
+  }
+
 }

@@ -32,24 +32,21 @@ export class TransactionsComponent {
       category: new FormControl(null,[Validators.required])
     });
   ngOnInit(): void {
-
-  this._DataService.isLogined.subscribe(
-      v => {this.auth = v;}
-        );
-  this._DataService.userData.subscribe(
-      data => {this.user = data}
-    );
-  if (!this.auth) {
-      this._Router.navigate(['login']);
-    } else {
-      this.loadTransactions();
-    }
-  this.changToExpense();
+    this._DataService.checkUserExist()
+    this._DataService.isLogined.subscribe(
+        v => {this.auth = v;}
+          );
+    this._DataService.userData.subscribe(
+        data => {this.user = data}
+      );
+    if (!this.auth) {
+        this._Router.navigate(['login']);
+      } else {
+        this.loadTransactions();
+      }
+    this.changToExpense();
 
   }
-  // types:string[] =[
-  //   "expense","income"
-  //   ];
 
   expense_categories: string[] = [
     'bills','transportation','clothes','education',

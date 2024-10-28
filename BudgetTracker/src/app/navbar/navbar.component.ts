@@ -52,5 +52,8 @@ export class NavbarComponent implements OnInit {
   isCurrentRoute(route: string): boolean {
     return this._Router.url === route && this._Router.url != "/home"; // Check if current route matches
   }
+  isPage(route:string):boolean{
+    return this._Router.url === route;
+  }
 
 }

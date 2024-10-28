@@ -13,7 +13,7 @@
               <div class="text-end">
                 <button class="close-btn ms- me-0" (click)="showform()"><i class="fa-regular fa-circle-xmark"></i></button>
               </div>
-            <button class="p-1 rounded rounded-bottom-0 me-1 tran-btn" (click)="changToExpense()" [class.active]="isExpense" [disabled]="isExpense">Expense</button>
+            <button class="p-1 rounded rounded-bottom-0 me-2 tran-btn" (click)="changToExpense()" [class.active]="isExpense" [disabled]="isExpense">Expense</button>
             <button class="p-1 rounded rounded-bottom-0 me-1 tran-btn" (click)="changToIncome()" [class.active]="!isExpense" [disabled]="!isExpense">Income</button>
 
         </div>
@@ -35,9 +35,8 @@
           </div>
           <div class="mb-3">
             <label for="transactionType" class="form-label me-3">Transaction type:</label>
-            <select formControlName="category"  class="form-select" id="transactionType" class="w-25">
+            <select formControlName="category"  class="form-select w-75 d-inline" id="transactionType" aria-label="Default select example">
                 <option selected>Choose a transaction type</option>
-                <!-- <option value="" disabled selected>Choose a transaction type</option> -->
                 <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
           </div>
@@ -49,16 +48,17 @@
     </div>
 
   <ul class="all-transactions list-unstyled mt-3" *ngIf="transactions.length >0; else noTransactions">
-      <li class="transaction mb-1 shadow p-2 rounded" *ngFor="let transaction of transactions">
-          <div class="date-info">
-          <p>Date: {{transaction.date}}</p>
+      <li class="transaction mb-2 shadow p-2 rounded" *ngFor="let transaction of transactions">
+          <div class="date-info d-flex justify-content-between">
+            <p>{{transaction.date}}</p>
+            <p class=" text-capitalize">{{transaction.category}}</p>
           </div>
           <div class="d-flex">
-          <p>{{transaction.name}}</p>
-          <div class="ms-auto">
-            <p *ngIf="transaction.transaction_type == 'income'" class=" text-success"> <i class="fa-solid fa-up-long"></i> E£ {{transaction.amount}}</p>
-          <p *ngIf="transaction.transaction_type == 'expense'" class="text-danger"> <i class="fa-solid fa-down-long"></i> E£ {{transaction.amount}}</p>
-          </div>
+            <p>{{transaction.name}}</p>
+            <div class="ms-auto">
+              <p *ngIf="transaction.transaction_type == 'income'" class=" text-success"> <i class="fa-solid fa-up-long"></i> E£ {{transaction.amount}}</p>
+              <p *ngIf="transaction.transaction_type == 'expense'" class="text-danger"> <i class="fa-solid fa-down-long"></i> E£ {{transaction.amount}}</p>
+            </div>
           </div>
 
       </li>

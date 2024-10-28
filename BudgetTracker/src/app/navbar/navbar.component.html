@@ -6,9 +6,9 @@
     </button>
     <div class="collapse  navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" routerLink="home" *ngIf="!auth">Home</a>
-        <a class="nav-link" routerLink="transactions" *ngIf="auth">Transactions</a>
-        <a class="nav-link" routerLink="statistic" *ngIf="auth">Statistic</a>
+        <a class="nav-link" routerLink="home" *ngIf="!auth && !isPage('/home')">Home</a>
+        <a class="nav-link" routerLink="transactions" *ngIf="auth && !isPage('/transactions')">Transactions</a>
+        <a class="nav-link" routerLink="statistic" *ngIf="auth !isPage('/statistic')">Statistic</a>
         <a routerLink="register" class=" nav-link btn btn-main mx-2"  *ngIf="!auth && !isCurrentRoute('/register')"><i class="fa-solid fa-user-plus"></i> Register</a>
         <a routerLink="login" class=" nav-link btn btn-secandary mx-2" *ngIf="!auth && !isCurrentRoute('/login')"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
         <a  class=" nav-link btn btn-main mx-2" (click)="logoutevent()" *ngIf="auth"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>

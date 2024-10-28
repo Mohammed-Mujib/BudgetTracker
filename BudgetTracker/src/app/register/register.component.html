@@ -2,7 +2,7 @@
   <div class="register autho-form rounded">
     <h2 class="form-head">Register Form</h2>
     <div class="row mt-3">
-      <div class="col-sm-12 col-md-5 p-4 d-flex justify-content-end">
+      <div class="col-sm-12 col-md-6 p-4 ">
         <form [formGroup]="registerForm" class="rounded p-3 " (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="username" class="form-label">User Name:</label>
@@ -18,11 +18,14 @@
                 <small class="text-danger">A valid email is required.</small>
             </div>
         </div>
-        <div class="mb-3">
+       <div class="mb-3 ">
             <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" formControlName="password" name="password" placeholder="enter your password">
+            <div class="position-relative">
+              <button class="eye" (click)="showPassword()"><i class="fa-regular" [class.fa-eye]="see" [class.fa-eye-slash]="!see"></i></button>
+              <input [type]="inputType" class="form-control" id="password" formControlName="password" name="password" placeholder="enter your password">
+            </div>
             <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
-                <small class="text-danger">Password is required (minimum 6 characters).</small>
+                <p class="text-danger bg-danger-subtle rounded mt-1 p-1">Password is required (minimum 6 characters).</p>
             </div>
         </div>
         <div class="text-center">
@@ -33,7 +36,7 @@
         </div>
       </form>
       </div>
-      <div class="col-sm-12 col-md-7 p-4 d-sm-none d-md-block">
+      <div class="col-sm-12 col-md-6 p-4 d-sm-none d-md-block">
         <img src="../../assets/svgs/undraw_sign_up_n6im.svg" alt="">
       </div>
     </div>

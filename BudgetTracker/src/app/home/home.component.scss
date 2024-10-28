@@ -46,3 +46,7 @@
     }
   }
 }
+*::selection{
+  background-color: var(--main);
+  color: var(--background);
+}

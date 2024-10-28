@@ -1,62 +1,31 @@
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class DataService {
-//   apiUrl = "http://127.0.0.1:8000/api/";
-
-//   constructor(private _HttpClient: HttpClient) { }
-
-//   getCsrfToken(): string {
-//     let cookieValue = null;
-//     if (document.cookie && document.cookie !== '') {
-//       const cookies = document.cookie.split(';');
-//       for (let i = 0; i < cookies.length; i++) {
-//         const cookie = cookies[i].trim();
-//         if (cookie.startsWith('csrftoken=')) {
-//           cookieValue = decodeURIComponent(cookie.substring('csrftoken='.length));
-//           break;
-//         }
-//       }
-//     }
-//     return cookieValue || ''; // Return empty string if not found
-//   }
-
-//   register(userData: any): Observable<any> {
-//     return this._HttpClient.post(this.apiUrl + "register/", userData);
-//   }
-
-//   login(userData: any): Observable<any> {
-//     return this._HttpClient.post(this.apiUrl + "login/", userData, { withCredentials: true });
-//   }
-
-//   user(): Observable<any> {
-//     const headers = new HttpHeaders({
-//       'X-CSRFToken': this.getCsrfToken(), // Include CSRF token
-//       'Content-Type': 'application/json'
-//     });
-//     return this._HttpClient.get(this.apiUrl + "user/", { headers, withCredentials: true });
-//   }
-
-//   logout(): Observable<any> {
-//     return this._HttpClient.post(this.apiUrl + "logout/", {}, { withCredentials: true });
-//   }
-// }
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private _HttpClient: HttpClient) {
-    // if(this.getCookie(`sessionid=`).length>3){
-    //     this.isLogined.next(true);
-    // }
+  constructor(private _HttpClient: HttpClient, private _Router:Router) {}
+
+
+  checkUserExist():boolean{
+    if(this.getCsrfToken()){
+        // console.log(this.getCookie("sessionid="));
+        // console.log("there is a user loged in ");
+        this.isLogined.next(true);
+        this.user().subscribe(
+          response => {
+            this.userData.next(response);
+          });
+        this._Router.navigate(['transactions']);
+        return true;
+    }
+    else{
+        console.log("no user is detected ")
+        return false;
+    }
   }
 
   getCookie(name:string): string {
@@ -73,6 +42,7 @@ export class DataService {
     }
     return cookieValue || '';
   }
+
   getCsrfToken(): string {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
